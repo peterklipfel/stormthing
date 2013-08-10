@@ -74,3 +74,15 @@ run
     juju debug-log
 
 to watch the output.  If, for some reason, things go wrong, exit out, and run `juju destroy-environment` and start from the bootstrap again.  However, this can take a couple minutes
+
+once these are started, run 
+    
+    juju add-relation wordpress mysql
+
+in order to connect the wordpress and mysql instance.  Now, if you would like to view the wordpress instance, use
+
+    juju expose wordpress
+
+and the wordpress site should be available at the ip specified
+
+
