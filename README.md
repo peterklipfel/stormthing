@@ -85,4 +85,21 @@ in order to connect the wordpress and mysql instance.  Now, if you would like to
 
 and the wordpress site should be available at the ip specified
 
+----
+
+Once this is up and running, we can try storm.  So first, I tore down the installation (you don't have to, but I didn't need them, and it takes less memory to delete them)
+
+Now I checked out the Storm charm
+
+    bzr branch lp:~maarten-ectors/charms/precise/storm/trunk precise
+
+this should initialize the repository under a directory called precise.  This is important becuase storm looks under particular directories for the charm.  Make sure that the directory (for me it was precise) that you put the repository under matches your operating system.  For more clarification see http://askubuntu.com/questions/65534/having-trouble-locating-charms-pointing-to-store-juju-ubuntu-com-dns-error
+
+Now we deploy the local storm repository
+
+    juju deploy zookeeper
+    juju deploy --repository path/to/storm/charm/ local:storm stormmaster #note that this is above the 'precise' directory
+    juju deploy --repository path/to/storm/charm/ local:storm stormworker #note that this is above the 'precise' directory
+
+
 
